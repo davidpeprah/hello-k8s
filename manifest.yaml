@@ -16,7 +16,7 @@ kind: Pod
 metadata:
   generateName: hello-k8s-
   labels:
-    app: hello_k8s
+    app: hello-k8s
 spec:
   containers:
     - name: hello-k8s
