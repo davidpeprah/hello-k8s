@@ -27,8 +27,7 @@ spec:
            name: server
       command: ["bash", "-c"]
       args:
-      - echo starting;
-        mkdir /hello-k8s;
-        pip install -r /hello-k8s/requirements.txt;
-        python3 /hello-k8s/main.py;
-        echo done;
+        - echo starting;
+          git clone https://github.com/davidpeprah/hello-k8s.git;
+          pip install -r /hello-k8s/requirements.txt;
+          python3 /hello-k8s/app/main.py;

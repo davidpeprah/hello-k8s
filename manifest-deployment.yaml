@@ -39,4 +39,4 @@ spec:
           - echo starting;
             git clone https://github.com/davidpeprah/hello-k8s.git;
             pip install -r /hello-k8s/requirements.txt;
-            python3 /hello-k8s/main.py;
+            python3 /hello-k8s/app/main.py;
