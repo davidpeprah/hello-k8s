@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hello-k8s
+  name: hello-k8s
+spec:
+  ports:
+  - port: 8000
+  selector:
+    app: hello-k8s
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-k8s
+  labels:
+    app: hello-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-k8s
+  template:
+    metadata:
+      labels:
+        app: hello-k8ss
+    spec:
+      containers:
+      - name: hello-k8s-server
+        image: python
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8000
+            name: server
+        command: ["bash", "-c"]
+        args:
+          - echo starting;
+            mkdir /hello-k8s;
+            pip install -r /hello-k8s/requirements.txt;
+            python3 /hello-k8s/main.py;
+            echo done;

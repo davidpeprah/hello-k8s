@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hello-k8s
+  name: hello-k8s
+spec:
+  ports:
+  - port: 8000
+  selector:
+    app: hello-k8s
+  type: NodePort
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  generateName: hello-k8s-
+  labels:
+    app: hello_k8s
+spec:
+  containers:
+    - name: hello-k8s
+      image: python
+      imagePullPolicy: IfNotPresent
+      command: ["bash", "-c"]
+      args:
+      - echo starting;
+        mkdir /hello-k8s;
+        pip install -r /hello-k8s/requirements.txt;
+        python3 /hello-k8s/main.py;
+        echo done;
