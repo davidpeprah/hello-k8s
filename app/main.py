@@ -1,5 +1,6 @@
 from typing import Union
-import socket uvicorn
+import socket 
+import uvicorn
 from fastapi import FastAPI
 
 app = FastAPI()

@@ -25,7 +25,7 @@ spec:
       ports:
          - containerPort: 8000
            name: server
-      command: ["bash", "-c"]
+      command: ["/bin/bash", "-c"]
       args:
         - echo starting;
           git clone https://github.com/davidpeprah/hello-k8s.git;
