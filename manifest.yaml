@@ -22,6 +22,9 @@ spec:
     - name: hello-k8s
       image: python
       imagePullPolicy: IfNotPresent
+      ports:
+         - containerPort: 8000
+           name: server
       command: ["bash", "-c"]
       args:
       - echo starting;
