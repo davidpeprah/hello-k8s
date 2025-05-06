@@ -1,6 +1,8 @@
 from typing import Union
 import socket 
+import os
 import uvicorn
+import psutil
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -10,7 +12,11 @@ app = FastAPI()
 def read_root():
     hostname = socket.gethostname()
     ipaddress = socket.gethostbyname(hostname)
-    return {"Hello": "k8s", 'hostname': hostname, 'ipaddress': ipaddress}
+    sys_user = os.getenv('USER')
+    # Getting loadover15 minutes
+    load1, load5, load15 = psutil.getloadavg()
+    cpu_usage = (load15/os.cpu_count()) * 100
+    return {"Hello": "k8s", 'hostname': hostname, 'ipaddress': ipaddress, 'user': sys_user, 'cpu_usage': f'{cpu_usage:.2f}%'}
 
 
 @app.get("/items/{item_id}")
