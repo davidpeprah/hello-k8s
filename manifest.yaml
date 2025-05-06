@@ -32,15 +32,15 @@ spec:
           pip install -r /hello-k8s/requirements.txt;
           python3 /hello-k8s/app/main.py;
       readinessProbe:
-      exec:
-        command:
-        - cat
-        - /hello-k8s/app/main.py
-      initialDelaySeconds: 20
-      periodSeconds: 10
+       exec:
+         command:
+         - cat
+         - /hello-k8s/app/main.py
+       initialDelaySeconds: 20
+       periodSeconds: 10
       livenessProbe:
-      httpGet:
-        path: /
-        port: server
-      initialDelaySeconds: 30
-      periodSeconds: 10
+       httpGet:
+         path: /
+         port: server
+       initialDelaySeconds: 30
+       periodSeconds: 10
