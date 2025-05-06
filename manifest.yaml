@@ -36,11 +36,11 @@ spec:
          command:
          - cat
          - /hello-k8s/app/main.py
-       initialDelaySeconds: 20
-       periodSeconds: 10
+       initialDelaySeconds: 30
+       periodSeconds: 360
       livenessProbe:
        httpGet:
          path: /
          port: server
-       initialDelaySeconds: 30
-       periodSeconds: 10
+       initialDelaySeconds: 60
+       periodSeconds: 30
